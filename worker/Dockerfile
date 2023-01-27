@@ -31,7 +31,7 @@ RUN  case ${TARGETPLATFORM} in \
     && dotnet publish -c release -o /app -r linux-${ARCH} --self-contained false --no-restore
 
 # app image
-FROM mcr.microsoft.com/dotnet/runtime:7.0
+FROM mcr.microsoft.com/dotnet/runtime:7.0@sha256:6d181ace0b2d6c50197c05f7845dc188b68121d1950fc341b18a31c8ec315264
 WORKDIR /app
 COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Worker.dll"]
